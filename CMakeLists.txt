@@ -16,6 +16,7 @@ if(NOT googletest_POPULATED)
 endif()
 
 include(GoogleTest)
+include_directories(include)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -std=gnu++11")
 
@@ -24,6 +25,7 @@ enable_testing()
 macro(gtest TESTNAME)
     add_executable(${TESTNAME} ${ARGN})
     target_link_libraries(${TESTNAME} PUBLIC gtest gmock gtest_main)
+
     gtest_discover_tests(${TESTNAME}
             TEST_PREFIX "${TESTNAME}."
             PROPERTIES FOLDER "tests")
