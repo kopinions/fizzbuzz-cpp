@@ -5,18 +5,19 @@ compiler:
   - gcc
 os:
   - linux
-branches:
-  only:
-    - master
-notifications:
-  email: true
-
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
       - g++-6
+      - cmake
+branches:
+  only:
+    - master
+notifications:
+  email: true
+
 script:
   - CXX=/usr/bin/g++-6 CC=/usr/bin/gcc-6 cmake .
   - cmake --build .
