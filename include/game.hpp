@@ -1,13 +1,18 @@
+#pragma once
 #ifndef FIZZBUZZ_GAME_HPP
 #define FIZZBUZZ_GAME_HPP
 
 
+#include <utility>
 #include <vector>
 #include "student.hpp"
+#include "rule.hpp"
+class student;
 
 class game: public std::enable_shared_from_this<game> {
 private:
     std::vector<std::unique_ptr<student>> _students;
+    std::vector<std::shared_ptr<rule>> _rules;
 public:
     game() {
     }
@@ -16,20 +21,24 @@ public:
         return _students;
     }
 
-    std::shared_ptr<game> create() {
-        return shared_from_this();
+    static std::shared_ptr<game> create(std::vector<rule> rules) {
+//        const game &args = ;
+//        return std::make_shared<game>(game());
+        return std::make_shared<game>(game(rules));
     }
+
+    std::vector<std::shared_ptr<rule>> rules() {
+        return _rules;
+    }
+
+    std::shared_ptr<game> shared();
 
     void involve(std::vector <std::unique_ptr<student>>& students);
+private:
+    explicit game(const std::vector<rule>& rules);
 };
 
-void game::involve(std::vector<std::unique_ptr<student>>& students) {
-    for (auto it = students.begin(); it < students.end(); it++) {
-        std::unique_ptr<student> &ptr = *it;
 
-        _students.push_back(std::make_unique<student>(**it));
-    }
-}
 
 
 #endif //FIZZBUZZ_GAME_HPP
