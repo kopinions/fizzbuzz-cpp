@@ -1,0 +1,22 @@
+language: cpp
+sudo: false
+dist: trusty
+compiler:
+  - gcc
+os:
+  - linux
+branches:
+  only:
+    - master
+notifications:
+  email: true
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-6
+script:
+  - CXX=/usr/bin/g++-6 CC=/usr/bin/gcc-6 cmake .
+  - cmake --build .
