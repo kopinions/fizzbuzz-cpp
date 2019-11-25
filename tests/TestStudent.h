@@ -1,0 +1,10 @@
+#ifndef FIZZBUZZ_TESTSTUDENT_H
+#define FIZZBUZZ_TESTSTUDENT_H
+
+
+class TestStudent {
+
+};
+
+
+#endif //FIZZBUZZ_TESTSTUDENT_H

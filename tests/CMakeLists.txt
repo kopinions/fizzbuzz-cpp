@@ -1,0 +1,1 @@
+gtest(TestStudent TestStudent.cpp)
