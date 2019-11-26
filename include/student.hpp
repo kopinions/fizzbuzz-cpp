@@ -23,7 +23,7 @@ public:
         _position = position;
     }
 
-    void join(const std::shared_ptr<game>& game);
+    void join(const std::shared_ptr<game> &game);
 };
 
 void student::join(const std::shared_ptr<game> &game) {
@@ -32,20 +32,19 @@ void student::join(const std::shared_ptr<game> &game) {
 
 std::string student::countoff() {
     const std::vector<std::shared_ptr<rule>> &rules = _game->rules();
-    std::cout << rules.size() << " size" << std::endl;
     std::vector<std::shared_ptr<rule>> matched;
-    for (const auto& r : rules) {
+    for (const auto &r : rules) {
         if (r->matched(_position)) {
             matched.emplace_back(r);
-        }
-        if (r->exclusive()) {
-            break;
+            if (r->exclusive()) {
+                break;
+            }
         }
     }
     if (matched.empty()) {
 
         return std::to_string(_position);
-    } else{
+    } else {
         std::string result = "";
         for (const auto &r: matched) {
             result += r->applied();

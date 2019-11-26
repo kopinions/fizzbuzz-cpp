@@ -96,6 +96,7 @@ TEST(StudentTest, should_skip_when_first_number_contains) {
     ga->involve(students);
 
     EXPECT_EQ("Fizz", ga->students().at(34)->countoff());
+    EXPECT_EQ("Buzz", ga->students().at(5-1)->countoff());
 }
 
 

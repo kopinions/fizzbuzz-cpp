@@ -32,3 +32,5 @@ macro(gtest TESTNAME)
 endmacro()
 #gtest(TestStudent TestStudent.cpp)
 add_subdirectory(tests)
+
+add_executable(game src/main.cpp)
