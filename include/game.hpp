@@ -21,9 +21,7 @@ public:
         return _students;
     }
 
-    static std::shared_ptr<game> create(std::vector<rule> rules) {
-//        const game &args = ;
-//        return std::make_shared<game>(game());
+    static std::shared_ptr<game> create(const std::vector<std::shared_ptr<rule>>& rules) {
         return std::make_shared<game>(game(rules));
     }
 
@@ -35,7 +33,7 @@ public:
 
     void involve(std::vector <std::unique_ptr<student>>& students);
 private:
-    explicit game(const std::vector<rule>& rules);
+    explicit game(const std::vector<std::shared_ptr<rule>>& rules);
 };
 
 

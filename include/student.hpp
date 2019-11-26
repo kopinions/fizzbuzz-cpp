@@ -38,6 +38,9 @@ std::string student::countoff() {
         if (r->matched(_position)) {
             matched.emplace_back(r);
         }
+        if (r->exclusive()) {
+            break;
+        }
     }
     if (matched.empty()) {
 
@@ -63,10 +66,8 @@ void game::involve(std::vector<std::unique_ptr<student>> &students) {
     }
 }
 
-game::game(const std::vector<rule> &rules) {
-    for (auto r: rules) {
-        _rules.push_back(std::make_shared<rule>(r));
-    }
+game::game(const std::vector<std::shared_ptr<rule>> &rules) {
+    _rules = rules;
 }
 
 std::shared_ptr<game> game::shared() {
