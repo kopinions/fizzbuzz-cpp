@@ -12,8 +12,7 @@ addons:
       - sourceline: 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-9 main'
     packages:
       - cmake
-      - clang
-      - g++-7
+      - clang-9
 branches:
   only:
     - master
@@ -25,6 +24,8 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install -y clang
 script:
+  - export CC="$CC-9
+  - export CXX="$CXX-9"
   - cmake .
   - cmake --build .
   - make test
