@@ -12,7 +12,7 @@ addons:
       - sourceline: 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-9 main'
     packages:
       - cmake
-      - llvm-toolchain-bionic-9
+      - clang
       - g++-7
 branches:
   only:
