@@ -8,9 +8,10 @@ os:
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
+      - sourceline: 'ppa:ubuntu-toolchain-r/test'
     packages:
       - cmake
+      - g++-7
 branches:
   only:
     - master
@@ -18,6 +19,8 @@ notifications:
   email: true
 
 script:
+  - export CC=gcc-7
+  - export CXX=g++-7
   - cmake .
   - cmake --build .
   - make test
