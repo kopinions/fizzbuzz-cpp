@@ -1,5 +1,5 @@
 language: cpp
-sudo: false
+sudo: true
 dist: bionic
 compiler:
   - clang
@@ -20,9 +20,10 @@ branches:
 notifications:
   email: true
 
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -y clang
 script:
-  - export CC=clang-9
-  - export CXX=clang++-9
   - cmake .
   - cmake --build .
   - make test
