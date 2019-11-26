@@ -97,3 +97,21 @@ TEST(StudentTest, should_skip_when_first_number_contains) {
 
     EXPECT_EQ("Fizz", ga->students().at(34)->countoff());
 }
+
+
+TEST(StudentTest, should_skip_when_no_rule_matched) {
+    std::vector<std::unique_ptr<student>> students;
+    for (auto i = 0; i < 100; i++) {
+        students.push_back(std::make_unique<student>(i + 1));
+    }
+
+    std::vector<std::shared_ptr<rule>> rules;
+    rules.emplace_back(std::make_shared<contains_rule>(contains_rule("3", "Fizz")));
+    rules.emplace_back(std::make_shared<times_rule>(times_rule(3, "Fizz")));
+    rules.emplace_back(std::make_shared<times_rule>(times_rule(4, "Buzz")));
+    rules.emplace_back(std::make_shared<times_rule>(times_rule(5, "Whizz")));
+    const std::shared_ptr<game> &ga = game::create(rules);
+    ga->involve(students);
+
+    EXPECT_EQ("7", ga->students().at(7-1)->countoff());
+}
