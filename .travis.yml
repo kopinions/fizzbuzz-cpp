@@ -13,5 +13,5 @@ notifications:
 
 script:
   - cmake .
-  - cmake --build .
+  - make
   - make test
