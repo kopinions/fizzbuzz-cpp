@@ -17,8 +17,9 @@ before_script:
   - sudo apt-get -qq update
   - sudo apt-get -y install clang-9 cmake
 script:
-  - export CC="$CC-9
-  - export CXX="$CXX-9"
+  - export CC="clang-9"
+  - export CXX="clang++-9"
+  - clang --version
   - cmake .
   - cmake --build .
   - make test
