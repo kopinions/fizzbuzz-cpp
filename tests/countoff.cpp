@@ -43,3 +43,9 @@ TEST(StudentTest, should_countoff_bizz_when_postion_both_5_and_7_times) {
     rules.emplace_back(rule(7, "Whizz"));
     EXPECT_EQ(countoff(35, rules), "BuzzWhizz");
 }
+
+TEST(StudentTest, should_count_off_buzz_when_rule_is_defined_5_fizz) {
+    std::vector<rule> rules;
+    rules.emplace_back(rule(5, "Fizz"));
+    EXPECT_EQ(countoff(5, rules), "Fizz");
+}

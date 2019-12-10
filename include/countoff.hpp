@@ -12,14 +12,10 @@ std::string countoff(int position, std::vector<rule> rules) {
         return std::to_string(position);
     }
     std::string words;
-    if (position % 3 == 0) {
-        words += "Fizz";
-    }
-    if (position % 5 == 0) {
-        words += "Buzz";
-    }
-    if (position % 7 == 0) {
-        words += "Whizz";
+    for (auto it = rules.begin(); it < rules.end(); it++) {
+        if (it->matched(position)) {
+            words += it->message();
+        }
     }
     return words;
 }

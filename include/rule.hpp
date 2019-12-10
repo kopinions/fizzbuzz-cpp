@@ -9,10 +9,27 @@
 class rule {
 public:
     rule(int criteria, std::string message);
+
+    bool matched(int position);
+
+    std::string message();
+
+private:
+    std::string _message;
+    int _criteria;
 };
 
-rule::rule(int criteria, std::string) {
+rule::rule(int criteria, std::string message) {
+    _criteria = criteria;
+    _message = message;
+}
 
+bool rule::matched(int position) {
+    return true;
+}
+
+std::string rule::message() {
+    return _message;
 }
 
 
