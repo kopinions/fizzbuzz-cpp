@@ -4,7 +4,10 @@
 
 #ifndef FIZZBUZZ_COUNTOFF_HPP
 #define FIZZBUZZ_COUNTOFF_HPP
-std::string countoff(int position, std::vector<int> rules) {
+
+#include "rule.hpp"
+
+std::string countoff(int position, std::vector<rule> rules) {
     if (rules.size() == 0) {
         return std::to_string(position);
     }
