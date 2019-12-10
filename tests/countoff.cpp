@@ -21,3 +21,11 @@ TEST(StudentTest, should_countoff_bizz_when_postion_is_5_times) {
     rules.emplace_back(5);
     EXPECT_EQ(countoff(5, rules), "Buzz");
 }
+
+
+
+TEST(StudentTest, should_countoff_bizz_when_postion_is_7_times) {
+    std::vector<int> rules;
+    rules.emplace_back(7);
+    EXPECT_EQ(countoff(7, rules), "Whizz");
+}

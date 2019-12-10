@@ -13,6 +13,8 @@ std::string countoff(int position, std::vector<int> rules) {
         return "Fizz";
     } else if (position % 5 == 0) {
         return "Buzz";
+    } else if (position % 7 == 0) {
+        return "Whizz";
     }
     return std::to_string(position);
 }
