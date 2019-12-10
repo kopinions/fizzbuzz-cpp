@@ -1,17 +1,23 @@
 #include <student.hpp>
 #include <game.hpp>
 #include <gtest/gtest.h>
+#include <countoff.hpp>
 
 TEST(StudentTest, should_countoff_same_as_position_when_rule_is_empty) {
-    std::vector<student> students;
-    for (auto i = 0; i < 100; i++) {
-        students.push_back(student(i + 1));
+    std::vector<int> rules;
+    for (int i = 1; i < 100; i++) {
+        EXPECT_EQ(countoff(i, rules), std::to_string(i));
     }
-    game ga(students);
-    const std::vector<student> &stus = ga.students();
+}
 
-    for (auto s : stus) {
-        student &student = s;
-        EXPECT_EQ(std::to_string(student.position()), student.countoff());
-    }
+TEST(StudentTest, should_countoff_bizz_when_postion_is_3_times) {
+    std::vector<int> rules;
+    rules.emplace_back(3);
+    EXPECT_EQ(countoff(3, rules), "Fizz");
+}
+
+TEST(StudentTest, should_countoff_bizz_when_postion_is_5_times) {
+    std::vector<int> rules;
+    rules.emplace_back(5);
+    EXPECT_EQ(countoff(5, rules), "Buzz");
 }
