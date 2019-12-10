@@ -29,3 +29,17 @@ TEST(StudentTest, should_countoff_bizz_when_postion_is_7_times) {
     rules.emplace_back(7);
     EXPECT_EQ(countoff(7, rules), "Whizz");
 }
+
+TEST(StudentTest, should_countoff_bizz_when_postion_both_3_and_5_times) {
+    std::vector<int> rules;
+    rules.emplace_back(3);
+    rules.emplace_back(5);
+    EXPECT_EQ(countoff(15, rules), "FizzBuzz");
+}
+
+TEST(StudentTest, should_countoff_bizz_when_postion_both_5_and_7_times) {
+    std::vector<int> rules;
+    rules.emplace_back(5);
+    rules.emplace_back(7);
+    EXPECT_EQ(countoff(35, rules), "BuzzWhizz");
+}

@@ -8,15 +8,17 @@ std::string countoff(int position, std::vector<int> rules) {
     if (rules.size() == 0) {
         return std::to_string(position);
     }
-
+    std::string words;
     if (position % 3 == 0) {
-        return "Fizz";
-    } else if (position % 5 == 0) {
-        return "Buzz";
-    } else if (position % 7 == 0) {
-        return "Whizz";
+        words += "Fizz";
     }
-    return std::to_string(position);
+    if (position % 5 == 0) {
+        words += "Buzz";
+    }
+    if (position % 7 == 0) {
+        words += "Whizz";
+    }
+    return words;
 }
 
 
